@@ -18,9 +18,6 @@ sys.path.append(script_dir)
 nltk_data_dir = os.path.join(script_dir, "nltk_data")
 nltk.data.path.append(nltk_data_dir)
 
-# Ensure stopwords are available
-nltk.download('stopwords')
-
 # Load the pre-trained model and vectorizer
 model_path = os.path.join(script_dir, 'spam_classifier_model.pkl')
 vectorizer_path = os.path.join(script_dir, 'tfidf_vectorizer.pkl')

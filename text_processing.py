@@ -2,10 +2,20 @@ import re
 import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
-from helper import download_nltk_stopwords
+import os
+import sys
+import nltk 
 
-# Download NLTK stopwords if not already downloaded
-download_nltk_stopwords()    
+# Determine the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Add script directory to Python path
+sys.path.append(script_dir)
+
+# Set NLTK data path to include the current script directory
+nltk_data_dir = os.path.join(script_dir, "nltk_data")
+nltk.data.path.append(nltk_data_dir)
+
 stopwords = stopwords.words('english')
 ps = PorterStemmer()
 
