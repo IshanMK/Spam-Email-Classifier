@@ -3,6 +3,7 @@ import os
 import requests
 from io import BytesIO
 from zipfile import ZipFile
+import nltk
 
 # Function to download NLTK stopwords corpus if not already downloaded
 def download_nltk_stopwords():
