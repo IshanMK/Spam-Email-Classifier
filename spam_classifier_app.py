@@ -8,8 +8,12 @@ from text_processing import clean_text, count_punct
 from helper import download_nltk_stopwords
 import os
 
-# Add nltk_data directory to nltk.data.path
-nltk.data.path.append("nltk_data")
+# Get the current working directory (where this script is located)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set NLTK data path to include the current working directory
+nltk_data_dir = os.path.join(script_dir, "nltk_data")
+nltk.data.path.append(nltk_data_dir)
 
 # Ensure stopwords are available
 try:
