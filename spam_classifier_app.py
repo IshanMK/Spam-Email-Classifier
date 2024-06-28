@@ -5,16 +5,12 @@ import re
 import string
 import nltk
 from text_processing import clean_text, count_punct
-import ssl
+import tempfile
 
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
+nltk.download('stopwords', download_dir=tempfile.gettempdir())
+nltk.data.path.append(tempfile.gettempdir())
 
-nltk.download('stopwords')
+# nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
 ps = nltk.PorterStemmer()
 
