@@ -5,8 +5,10 @@ import re
 import string
 import nltk
 from text_processing import clean_text, count_punct
+from helper import download_nltk_stopwords
 
-nltk.download('stopwords')
+# nltk.download('stopwords')
+download_nltk_stopwords()
 stopwords = nltk.corpus.stopwords.words('english')
 ps = nltk.PorterStemmer()
 
