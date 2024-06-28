@@ -6,9 +6,16 @@ import string
 import nltk
 from text_processing import clean_text, count_punct
 from helper import download_nltk_stopwords
+import os
 
-# Download NLTK stopwords if not already downloaded
-download_nltk_stopwords()
+# Add nltk_data directory to nltk.data.path
+nltk.data.path.append("nltk_data")
+
+# Ensure stopwords are available
+try:
+    nltk.corpus.stopwords.words('english')
+except LookupError:
+    raise RuntimeError("NLTK stopwords not found. Please check the download.")
 
 # nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
