@@ -5,21 +5,25 @@ import re
 import string
 import nltk
 from text_processing import clean_text, count_punct
-from helper import download_nltk_stopwords
 import os
+import sys
 
-# Get the current working directory (where this script is located)
+# Determine the directory of the current script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Set NLTK data path to include the current working directory
+# Add script directory to Python path
+sys.path.append(script_dir)
+
+# Set NLTK data path to include the current script directory
 nltk_data_dir = os.path.join(script_dir, "nltk_data")
 nltk.data.path.append(nltk_data_dir)
 
 # Ensure stopwords are available
-try:
-    nltk.corpus.stopwords.words('english')
-except LookupError:
-    raise RuntimeError("NLTK stopwords not found. Please check the download.")
+nltk.download('stopwords')
+
+# Load the pre-trained model and vectorizer
+model_path = os.path.join(script_dir, 'spam_classifier_model.pkl')
+vectorizer_path = os.path.join(script_dir, 'tfidf_vectorizer.pkl')
 
 # nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
